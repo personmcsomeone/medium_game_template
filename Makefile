@@ -13,7 +13,7 @@ INCLUDES = -I. -I$(RAYLIB_PATH)/src -I$(RAYLIB_PATH)/src/external
 LIBS     = -L$(RAYLIB_PATH)/src -lraylib -lopengl32 -lgdi32 -lwinmm
 
 # Sources
-SOURCES  = $(wildcard $(SRC_DIR)/*.c)
+SOURCES  = $(wildcard $(SRC_DIR)/*.c*)
 HEADERS  = $(wildcard $(SRC_DIR)/*.h)
 
 # Target

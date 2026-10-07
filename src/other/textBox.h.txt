@@ -1,0 +1,6 @@
+#pragma once
+#include <raylib.h>
+#include <string.h>
+
+void getCharacterInput(int* character);
+void applyCharacter(char* string, int character);

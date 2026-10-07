@@ -1,0 +1,48 @@
+#include "textBox.h"
+
+void getCharacterInput(int* character){
+    int key = GetKeyPressed();
+    
+    if(key == 259){
+        *character = -1;
+    }
+    else if(key != 0){ //need non-zero input
+        *character = key;
+    }
+}
+
+void applyCharacter(char* string, int character){
+    //nothing
+    //int len = strnlen(string,64);
+    int lastCharLoc = 0;
+    if(character == 0){
+        //do nothing
+    }
+    else if(character == -1){
+        //add backspacing
+        for(int i = 0; i < 64; i++){ //make into function
+            if(string[i] == "\0"){
+                lastCharLoc = i;
+                break;
+            }
+        }
+        if(lastCharLoc){
+            string[lastCharLoc] = NULL;
+            string[lastCharLoc - 1] = "\0";
+        }
+        
+    }
+    else if(character){
+        for(int i = 0; i < 63; i++){ //make into function
+            if(string[i] == "\0"){
+                lastCharLoc = i;
+                break;
+            }
+        }
+
+        string[lastCharLoc +1 ] = character;
+        string[lastCharLoc + 2] = "\0";
+    }
+}
+
+//int getLastCharLoc()

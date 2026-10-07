@@ -1,0 +1,55 @@
+#include "game.h"
+#include <raylib.h>
+
+
+void Game_Update(Game* game)
+{
+    if (game->isGameOver) return;
+
+    getCharacterInput(&game->lastCharacter);
+    applyCharacter(game->string, game->lastCharacter);
+
+
+    //Player_Update(&game->player, game->deltaTime);
+    //Enemy_UpdateAll(game->enemies, MAX_ENEMIES, game->deltaTime);
+    //World_Update(&game->world, game->deltaTime);
+
+}
+
+void Game_Draw(Game* game)
+{
+    BeginDrawing();
+    ClearBackground(RAYWHITE);
+    int w = 620;
+    int h = 120;
+    int txtSpace = 5;
+    //strncpy();
+    //char* drawString = &(game->string);
+    //char* lastChar[1] = {0};
+    //lastChar[0] =  game->lastCharacter;
+    DrawRectangle(GetScreenWidth()/2 - w/2, GetScreenHeight()/2 - h/2, w, h, GRAY);
+    DrawRectangle(GetScreenWidth()/2 - (w-10)/2, GetScreenHeight()/2 - (h-10)/2, w-10, h-10, RAYWHITE);
+
+    DrawText(TextFormat("%c",game->lastCharacter), GetScreenWidth()/2 - (w-10)/2 + txtSpace,
+            GetScreenHeight()/2 - (h-10)/2 + txtSpace, 100, BLACK);
+    //Player_Draw(&game->player);
+    DrawText(TextFormat("%d",game->lastCharacter), GetScreenWidth()/2 - (w-10)/2 + txtSpace,
+            GetScreenHeight()/2 - (h-10)/2 + txtSpace + 110, 100, BLACK);
+    
+    DrawText(game->string, GetScreenWidth()/2 - (w-10)/2 + txtSpace,
+            GetScreenHeight()/2 - (h-10)/2 + txtSpace + 220, 100, BLACK);
+
+    EndDrawing();    
+}
+
+void Game_Init(Game* game){
+    //Player_Init(&(game->player));
+
+    game->string[0] = "\0";
+
+    game->deltaTime = 0;
+
+    game->isGameOver = false;
+
+    game->score = 0;
+}

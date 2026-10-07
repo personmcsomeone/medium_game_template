@@ -1,17 +1,13 @@
 // game.h
 #pragma once
 #include "globals.h"
-#include "player.h"
-#include "enemy.h"
-#include "world.h"
+#include "textBox.h"
 #include <raylib.h>
 
 typedef struct Game
 {
-    Player player;
-    Enemy enemies[MAX_ENEMIES];
-    World world;
-
+    char string[64];
+    int lastCharacter;
     float deltaTime;
     int score;
     bool isGameOver;
